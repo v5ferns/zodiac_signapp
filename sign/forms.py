@@ -1,6 +1,8 @@
 from django import forms
 
-from django.forms import DateField
+from datetime import date
+
+from .models import Person
 
 
 class ZodiacForm(forms.Form):
@@ -8,5 +10,9 @@ class ZodiacForm(forms.Form):
     month = forms.CharField(max_length=20, label='Month')
 
 
-class ZodiacForm2(forms.Form):
-    birthdate = DateField(widget=forms.SelectDateWidget())
+class PersonForm(forms.ModelForm):
+    birthdate = forms.DateField(label="Birthdate MM/DD/YYYY", input_formats=["%m/%d/%Y", "%m-%d-%Y", "%m%d%Y"])
+    class Meta:
+        model = Person
+        fields = ["birthdate"]
+    #birthdate = DateField(widget=forms.SelectDateWidget())

@@ -20,6 +20,6 @@ from sign.views import calculate_zodiac_sign, cal_zod
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", calculate_zodiac_sign, name="home"),
-    path("form2/", cal_zod),
+    path("form2/", cal_zod, name="form2"),
 
 ]
